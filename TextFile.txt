@@ -1,0 +1,45 @@
+* HOME
+home__social
+https://www.linkedin.com/
+https://github.com/
+
+home__description
+High level experience in web design and development knowledge, producing quality work.
+
+
+* ABOUT
+about__description
+Heck should i make this for asher or me ';('
+
+about__info-name
+Years <br> experience
+Completed <br> project
+Companies <br> worked
+
+
+* SERVICES
+services__modal-service
+
+
+
+* PORTFOLIO
+portfolio__description
+howdy folk
+
+
+* PROJECT
+project__description
+hello world
+
+
+* TESTIMONIAL
+testimonial__description
+I do stuff
+
+
+* FOOTER
+footer__social
+https://www.facebook.com/
+https://www.instagram.com/
+
+
