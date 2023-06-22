@@ -581,7 +581,7 @@ h6,
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #3d1985;
 }
 
 ul,
@@ -679,7 +679,7 @@ abbr.initialism {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  border-left: 5px solid #eeeeee;
+  border-left: 5px solid #3d1985;
 }
 
 blockquote p {
@@ -705,7 +705,7 @@ blockquote small:before {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
-  border-right: 5px solid #eeeeee;
+  border-right: 5px solid #3d1985;
   border-left: 0;
 }
 
