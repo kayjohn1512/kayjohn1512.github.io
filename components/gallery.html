@@ -1,0 +1,55 @@
+<!-- Gallery grid -->
+<div class="gallery-row">
+
+    <div class="gallery-column">
+        <img src="asherphoto4.png" alt="hi" onclick="expandImage(this);" id="image"
+            header="January 27th 2023"
+            description="In this photo Asher was laying on the beanbag underneath a blanket. He then proceeded to follow me into the kitchen while I making food but took the blanket with him. He could not figure out how to remove the blanket and instead stood there and stared at me letting out little yips until I removed the blanket for him."/>
+    </div>
+
+    <div class="gallery-column">
+        <img src="http://placehold.it/700x400" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
+            header=""
+            description=""/>
+    </div>
+
+    <div class="gallery-column">
+        <img src="http://placehold.it/700x400" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
+            header=""
+            description=""/>
+    </div>
+
+</div>
+
+<!-- Expanding image container -->
+<div class="gallery-expanded-image">
+    <!-- Close the image -->
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  
+    <!-- Expanded image -->
+    <img id="expandedImg" style="width:100%">
+
+    <div class="text">
+        <!-- Image header -->
+        <h3 id="imgHeader"></h3>
+    
+        <!-- Image description -->
+        <p id="imgDescription"></p>
+    </div>
+    
+</div>
+
+<script>
+function expandImage(img) {
+    var expandedImg = document.getElementById("expandedImg");
+    var imgHeader = document.getElementById("imgHeader");
+    var imgText = document.getElementById("imgDescription");
+
+    expandedImg.src = $(img).attr("src");
+    imgHeader.innerText = $(img).attr("header");
+    imgText.innerText = $(img).attr("description");
+
+    expandedImg.parentElement.style.display = "block";
+    console.log(expandedImg.style.display);
+}
+</script>

@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- <meta http-equiv="Cache-control" content="no-cache"> -->
 
     <title>asher website shell</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- Custom CSS for the '3 Col Portfolio' Template -->
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
   </head>
 
   <body>
@@ -49,27 +52,7 @@
 
       </div>
 
-      <div class="row">
-
-        <div class="col-md-4 portfolio-item">
-          <a href="#project-link"><img src="asherphoto4.png" alt="hi" class="inline"/></a>
-          <h3><a href="#project-link">January 27th 2023</a></h3>
-          <p>In this photo Asher was laying on the beanbag underneath a blanket. He then proceeded to follow me into the kitchen while I making food but took the blanket with him. He could not figure out how to remove the blanket and instead stood there and stared at me letting out little yips until I removed the blanket for him.</p>
-        </div>
-
-        <div class="col-md-4 portfolio-item">
-          <a href="#project-link"><img class="img-responsive" src="http://placehold.it/700x400"></a>
-          <h3><a href="#project-link">Um asher at the store</a></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-
-        <div class="col-md-4 portfolio-item">
-          <a href="#project-link"><img class="img-responsive" src="http://placehold.it/700x400"></a>
-          <h3><a href="#project-link">Um asher at the beach</a></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-
-      </div>
+      <div id="gallery"></div>
 
       <hr>
 
@@ -109,9 +92,16 @@
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript">
-      var dt = new Date();
-      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+      // var dt = new Date();
+      // document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
     </script>
+
+    <!-- Load Components -->
+    <script> 
+      $(document).ready(function() {
+          $("#gallery").load("components/gallery.html");
+      });
+    </script> 
   </body>
 
 </html>

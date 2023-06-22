@@ -1,0 +1,60 @@
+body {
+	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+footer {
+	margin: 50px 0;
+}
+
+/******************* Gallery *******************/
+/* Grid: Four equal columns that floats next to each other */
+.gallery-column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+/* Grid images */
+.gallery-column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+    object-fit: cover;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-column img:hover {
+    opacity: 1;
+}
+
+/* Clear floats after the columns */
+.gallery-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Expanding image */
+.gallery-expanded-image {
+    position: relative;
+    display: none;
+}
+
+/* Close button */
+.gallery-expanded-image .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* Header */
+.gallery-expanded-image .text {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
