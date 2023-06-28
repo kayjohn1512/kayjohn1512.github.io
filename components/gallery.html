@@ -65,10 +65,7 @@
         <img id="expandedImg">
 
         <!-- Open the caption -->
-        <span onclick="var caption = $(this).next(); 
-                        if(caption.css('display') == 'none') {caption.css('display', 'block');}
-                        else {caption.css('display', 'none');}" 
-                        class="captionbtn"><img src="assets/ui/caption-icon.png" alt="info"/></span>
+        <span onclick="expandCaption(this);" class="captionbtn"><img src="assets/ui/caption-icon.png" alt="info"/></span>
 
         <div class="text" id="caption">
             <!-- Image header -->
@@ -92,5 +89,18 @@ function expandImage(img) {
     imgText.innerText = $(img).attr("description");
 
     expandedImg.parentElement.parentElement.style.display = "block";
+}
+
+function expandCaption(button) {
+    var caption = $(button).next();
+
+    if(caption.css('display') == 'none') {
+        caption.css('display', 'block');
+        $('#imgHeader').fitText(1, { minFontSize: '10px', maxFontSize: '20px'});
+        $('#imgDescription').fitText(2.5, { minFontSize: '10px', maxFontSize: '20px'});
+    }
+    else {
+        caption.css('display', 'none');
+    }
 }
 </script>

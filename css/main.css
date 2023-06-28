@@ -110,7 +110,6 @@ footer {
     padding-bottom: 10%;
     color: white;
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    font-size: 1vw;
     word-wrap: break-word;
 }
 
