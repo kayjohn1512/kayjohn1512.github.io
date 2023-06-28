@@ -59,12 +59,18 @@
 <div class="gallery-popup-background">
     <div class="gallery-expanded-image">
         <!-- Close the image -->
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <span onclick="this.parentElement.parentElement.style.display='none'; $(caption).css('display', 'none');" class="closebtn">&times;</span>
     
         <!-- Expanded image -->
-        <img id="expandedImg" style="width:100%">
+        <img id="expandedImg">
 
-        <div class="text">
+        <!-- Open the caption -->
+        <span onclick="var caption = $(this).next(); 
+                        if(caption.css('display') == 'none') {caption.css('display', 'block');}
+                        else {caption.css('display', 'none');}" 
+                        class="captionbtn"><img src="assets/ui/caption-icon.png" alt="info"/></span>
+
+        <div class="text" id="caption">
             <!-- Image header -->
             <h3 id="imgHeader"></h3>
         
@@ -86,7 +92,5 @@ function expandImage(img) {
     imgText.innerText = $(img).attr("description");
 
     expandedImg.parentElement.parentElement.style.display = "block";
-    expandedImg.parentElement.style.display = "block";
-    console.log(expandedImg.parentElement.parentElement.style.display);
 }
 </script>

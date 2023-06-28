@@ -43,21 +43,30 @@ footer {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
+    text-align: center;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-name: animatefade;
+    animation-duration: 0.5s;
 }
 
 /* Expanded image */
 .gallery-expanded-image {
     position: relative;
-    display: none;
+    display: inline-block;
     margin: auto;
-    padding: 0;
+    margin-top: 5%;
+    animation-name: animatefade;
+    animation-duration: 0.2s;
+    text-align: left;
+}
+
+.gallery-expanded-image #expandedImg {
+    display: block;
+    top: 80%;
+    max-width:100%;
+    max-height:100%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animatetop;
-    animation-duration: 0.4s
 }
 
 /* Close button */
@@ -65,22 +74,48 @@ footer {
     position: absolute;
     top: 10px;
     right: 15px;
+    height: fit-content;
+    width: fit-content;
     color: white;
     font-size: 35px;
     cursor: pointer;
 }
 
-/* Header */
+/* Caption button */
+.gallery-expanded-image .captionbtn {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    z-index: 1;
+    color: white;
+    cursor: pointer;
+    max-width: 7%;
+    max-height: 7%;
+}
+/* Caption button image*/
+.gallery-expanded-image .captionbtn img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Caption */
 .gallery-expanded-image .text {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    display: none;
+    width: 100%;
+    max-height: 40%;
+    bottom: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 10%;
     color: white;
-    font-size: 20px;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-size: 1vw;
+    word-wrap: break-word;
 }
 
 /* Add Animation */
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+@keyframes animatefade {
+    from {opacity: 0}
+    to {opacity: 1}
   }
