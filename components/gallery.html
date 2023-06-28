@@ -56,21 +56,23 @@
 </div>
 
 <!-- Expanding image container -->
-<div class="gallery-expanded-image">
-    <!-- Close the image -->
-    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-  
-    <!-- Expanded image -->
-    <img id="expandedImg" style="width:100%">
+<div class="gallery-popup-background">
+    <div class="gallery-expanded-image">
+        <!-- Close the image -->
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    
+        <!-- Expanded image -->
+        <img id="expandedImg" style="width:100%">
 
-    <div class="text">
-        <!-- Image header -->
-        <h3 id="imgHeader"></h3>
-    
-        <!-- Image description -->
-        <p id="imgDescription"></p>
+        <div class="text">
+            <!-- Image header -->
+            <h3 id="imgHeader"></h3>
+        
+            <!-- Image description -->
+            <p id="imgDescription"></p>
+        </div>
+        
     </div>
-    
 </div>
 
 <script>
@@ -83,7 +85,8 @@ function expandImage(img) {
     imgHeader.innerText = $(img).attr("header");
     imgText.innerText = $(img).attr("description");
 
+    expandedImg.parentElement.parentElement.style.display = "block";
     expandedImg.parentElement.style.display = "block";
-    console.log(expandedImg.style.display);
+    console.log(expandedImg.parentElement.parentElement.style.display);
 }
 </script>

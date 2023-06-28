@@ -34,10 +34,30 @@ footer {
     clear: both;
 }
 
-/* Expanding image */
+/* Expanded image transluscent background */
+.gallery-popup-background {
+    position: fixed;
+    display: none;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Expanded image */
 .gallery-expanded-image {
     position: relative;
     display: none;
+    margin: auto;
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
 }
 
 /* Close button */
@@ -58,3 +78,9 @@ footer {
     color: white;
     font-size: 20px;
 }
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
