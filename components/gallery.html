@@ -1,3 +1,6 @@
+<!-- Filters -->
+<div class="filters"><button onclick='clearFilters()'>None</button></div>
+
 <!-- Gallery grid -->
 <div class="gallery"></div>
 
@@ -11,7 +14,7 @@
         <img id="expandedImg">
 
         <!-- Open the caption -->
-        <span onclick="expandCaption(this);" class="captionbtn"><img src="assets/ui/caption-icon.png" alt="info"/></span>
+        <span onclick="expandCaption(this);" class="captionbtn"><img src="assets/icons/caption-icon.png" alt="info"/></span>
 
         <div class="text" id="caption">
             <!-- Image header -->
@@ -54,23 +57,72 @@ function expandCaption(button) {
 
 <!-- Data functions -->
 <script>
+var imagedata;
+
 function displayImages() {
     var dir = "/images/";
-    $.get('imagedata.csv', function(CSVdata) {
-        var data = $.csv.toObjects(CSVdata);
-        console.log(data);
+    $.get('/assets/data/imagedata.csv', function(CSVdata) {
+        imagedata = $.csv.toObjects(CSVdata);
+        console.log(imagedata);
         var i = 0;
         var currRow = null;
-        data.forEach(element => {
+        imagedata.forEach(img => {
             if(i % 4 == 0) {
                 currRow = $("<div class='gallery-row'></div>");
                 $('.gallery').append(currRow);
             }
-            currRow.append("<div class='gallery-column'><img src='" + dir + element['filename'] + "' alt='" + element['alt'] + "' onclick='expandImage(this);' style='cursor: pointer;' id='image' header='" + element['header'] + "' description='" + element['description'] + "'/></div>");
+            currRow.append("<div class='gallery-column'><img src='" + dir + img['filename'] + "' alt='" + img['alt'] + "' onclick='expandImage(this);' style='cursor: pointer;' id='image" + i + "' header='" + img['header'] + "' description='" + img['description'] + "'/></div>");
+            // Lazy load images > 8 in future?
             ++i;
         });
     });
 }
 
+function loadFilters() {
+    var file = "/assets/data/filters.txt";
+    $.get(file,function(txt){
+        var lines = txt.split("\n");
+        for (var i = 0; i < lines.length; ++i) {
+            if(lines[i].length > 0) {
+                $('.filters').append("<button onclick='filterImages(&quot;" + lines[i] + "&quot;)'>" + lines[i] + "</button>");
+            }
+        }
+    }); 
+}
+
+function filterImages(filter) {
+    var i = 0;
+    clearFilters();
+    imagedata.forEach(img => {
+        if(!containsFilter(img['filters'], filter)) {
+            $("#image" + i).parent().css('display', 'none');
+            console.log(i);
+        }
+        ++i;
+    });
+}
+
+function clearFilters() {
+    for (var i = 0; i < imagedata.length; ++i) {
+        $("#image" + i).parent().css('display', 'block');
+    }
+}
+
+// Helper function to check csv data for matching filters
+function containsFilter(filters, filter) {
+    var filterList = filters.split(', ');
+    var filterMatch = false;
+    console.log(filterList, filter);
+    filterList.forEach(element => {
+        if(element.length > 0) {
+            if(element == filter) {
+                filterMatch = true;
+            }
+        }
+    });
+    return filterMatch;
+}
+
 displayImages();
+loadFilters();
 </script>
