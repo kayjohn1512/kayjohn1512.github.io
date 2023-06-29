@@ -72,12 +72,14 @@ footer {
 /* Close button */
 .gallery-expanded-image .closebtn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 15px;
     height: fit-content;
     width: fit-content;
     color: white;
     font-size: 35px;
+    line-height: 45%;
+    text-shadow: 1px 1px rgba(0,0,0,0.4);
     cursor: pointer;
 }
 

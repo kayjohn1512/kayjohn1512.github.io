@@ -1,59 +1,5 @@
 <!-- Gallery grid -->
-<div class="gallery-row">
-
-    <div class="gallery-column">
-        <img src="images/asherphoto4.jpg" alt="hi" onclick="expandImage(this);" id="image"
-            header="January 27th 2023"
-            description="In this photo Asher was laying on the beanbag underneath a blanket. He then proceeded to follow me into the kitchen while I making food but took the blanket with him. He could not figure out how to remove the blanket and instead stood there and stared at me letting out little yips until I removed the blanket for him."/>
-    </div>
-
-    <div class="gallery-column">
-        <img src="images/asherphoto6.jpg" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
-            header="July 23rd, 2022"
-            description="This day was a first for Asher. He went to an actual groomer and got a fancy cut and a little handkerchief as a cherry on top. Feeling on top of the world."/>
-    </div>
-
-    <div class="gallery-column">
-        <img src="images/asherphoto7.jpg" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
-            header="September 21st 2022"
-            description="Today Asher spent some time with his bestie in her room. As you can see he has his infamous smile on his face showing just a little bit of teeth."/>
-    </div>
-    
-    <div class="gallery-column">
-        <img src="images/asherphoto13.jpg" alt="hi" onclick="expandImage(this);" id="image"
-            header="March 20th 2022"
-            description="On this day we learned about this event called Holi. Asher loved being around so many people and getting covered in colors by people petting him."/>
-    </div>
-
-</div>
-
-<div class="gallery-row">
-
-    <div class="gallery-column">
-        <img src="images/asherphoto9.jpg" alt="hi" onclick="expandImage(this);" id="image"
-            header="January 27th 2023"
-            description="Just a little nap time."/>
-    </div>
-
-    <div class="gallery-column">
-        <img src="images/asherphoto14.jpg" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
-            header="January 5, 2022"
-            description="Three days after being picked up at the gas station my new family shaved me down. I was a little curious pup and hopped up onto the window to see outside."/>
-    </div>
-
-    <div class="gallery-column">
-        <img src="images/asherphoto11.jpg" alt="hi" onclick="expandImage(this);" style="cursor: pointer;" id="image"
-            header="February 11th, 2023"
-            description="Today there was a birthday party in the house and Asher was all dressed up. He was feeling like a dapper gentleman."/>
-    </div>
-    
-    <div class="gallery-column">
-        <img src="images/asherphoto12.jpg" alt="hi" onclick="expandImage(this);" id="image"
-            header="February 7th 2023"
-            description="Come on just one pet please"/>
-    </div>
-
-</div>
+<div class="gallery"></div>
 
 <!-- Expanding image container -->
 <div class="gallery-popup-background">
@@ -78,6 +24,7 @@
     </div>
 </div>
 
+<!-- UI functions -->
 <script>
 function expandImage(img) {
     var expandedImg = document.getElementById("expandedImg");
@@ -103,4 +50,31 @@ function expandCaption(button) {
         caption.css('display', 'none');
     }
 }
+</script>
+
+<script type="module">
+    import { parse } from '/assets/js/csv-main/index.js'
+</script>
+
+<!-- Data functions -->
+<script>
+function displayImages() {
+    var dir = "/images/";
+    $.get('imagedata.csv', function(CSVdata) {
+        var data = $.csv.toObjects(CSVdata);
+        console.log(data);
+        var i = 0;
+        var currRow = null;
+        data.forEach(element => {
+            if(i % 4 == 0) {
+                currRow = $("<div class='gallery-row'></div>");
+                $('.gallery').append(currRow);
+            }
+            currRow.append("<div class='gallery-column'><img src='" + dir + element['filename'] + "' alt='" + element['alt'] + "' onclick='expandImage(this);' style='cursor: pointer;' id='image' header='" + element['header'] + "' description='" + element['description'] + "'/></div>");
+            ++i;
+        });
+    });
+}
+
+displayImages();
 </script>
